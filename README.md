@@ -64,7 +64,7 @@ This project was tested on Python 3.14.2.
 
 ![AbuseIPDB API Key](readme_media/ai_api_key.png)
 
-### secrets.json
+### .env File Setup
 
 **`Warning`**: Do not share, upload, commit, or otherwise expose your API keys to the public. This can lead to unauthorized access and usage of your API keys. The `.env` file is used to store your API keys in a secure manner, and has been added to the `.gitignore` file to prevent accidental exposure.
 
@@ -80,7 +80,7 @@ ABUSEIPDB_API_KEY=YOUR ABUSEIPDB API KEY
 
 3. Ensure that the `.env` file is in the root directory of the project.
 
-## Usage
+## Quick Start
 
 1. Install the required Python packages using pip:
 
@@ -88,4 +88,18 @@ ABUSEIPDB_API_KEY=YOUR ABUSEIPDB API KEY
 pip install -r requirements.txt
 ```
 
-2. TODO: Create a main script to run the workflow
+2. Ensure your `.env` file is set up with the necessary API keys as described in [`.env File Setup`](#env-file-setup) section.
+
+3. Run main.py to execute the example workflow. Edit the file to modify the example IOCs as needed or parts of the workflow you want to test.
+
+```bash
+python main.py
+```
+
+## Unit Tests
+
+Unit tests are provided in the `tests/` directory. To run the tests, use the following command:
+
+```bash
+pytest tests/ -v
+```

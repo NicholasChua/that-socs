@@ -1,0 +1,68 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-25T13:52:40.795180+00:00",
+    "source": "VirusTotal",
+    "ioc_type": "domain",
+    "ioc": "polyfill.io",
+    "reputation_score": -99,
+    "malicious": true,
+    "confidence_score": 91,
+    "detection_stats": {
+        "malicious": 5,
+        "suspicious": 2,
+        "harmless": 57,
+        "undetected": 31,
+        "total": 95
+    },
+    "geo_info": null,
+    "network_info": null,
+    "abuse_info": null,
+    "timestamps": {
+        "last_analysis": 1766666045,
+        "last_modified": 1719433962
+    },
+    "tags": [],
+    "categories": [
+        "Information Technology, Malicious (alphaMountain.ai)",
+        "computersandsoftware",
+        "known infection source",
+        "spyware and malware",
+        "malicious web sites. information technology"
+    ],
+    "file_info": null,
+    "domain_info": {
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2013-03-18T19:00:23Z",
+        "expiration_date": 1773860423,
+        "whois_date": 1765077546,
+        "tld": "io"
+    },
+    "additional_info": {
+        "popularity_ranks": {
+            "Majestic": {
+                "rank": 255897,
+                "timestamp": 1766587098
+            },
+            "Statvoo": {
+                "timestamp": 1675097892,
+                "rank": 664841
+            },
+            "Alexa": {
+                "timestamp": 1675097892,
+                "rank": 664841
+            },
+            "Cisco Umbrella": {
+                "rank": 19855,
+                "timestamp": 1766587082
+            },
+            "Cloudflare Radar": {
+                "rank": 1000000,
+                "timestamp": 1734426778
+            }
+        },
+        "total_votes": {
+            "harmless": 2,
+            "malicious": 22
+        }
+    }
+}

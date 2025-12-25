@@ -1,0 +1,37 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-25T13:52:40.794995+00:00",
+    "source": "AbuseIPDB",
+    "ioc_type": "ip",
+    "ioc": "118.25.6.39",
+    "reputation_score": null,
+    "malicious": false,
+    "confidence_score": 8,
+    "detection_stats": null,
+    "geo_info": {
+        "country": "CN"
+    },
+    "network_info": {
+        "isp": "Tencent Cloud Computing (Beijing) Co., Ltd",
+        "domain": "tencent.com",
+        "hostnames": [],
+        "usage_type": "Data Center/Web Hosting/Transit"
+    },
+    "abuse_info": {
+        "abuse_confidence_score": 8,
+        "total_reports": 4,
+        "last_reported": "2025-12-25T11:02:21+00:00",
+        "is_tor": false,
+        "is_whitelisted": false,
+        "num_distinct_users": 3
+    },
+    "timestamps": null,
+    "tags": [],
+    "categories": [],
+    "file_info": null,
+    "domain_info": null,
+    "additional_info": {
+        "is_public": true,
+        "ip_version": 4
+    }
+}

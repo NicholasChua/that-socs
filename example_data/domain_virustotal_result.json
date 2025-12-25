@@ -1,0 +1,1205 @@
+{
+    "data": {
+        "id": "polyfill.io",
+        "type": "domain",
+        "links": {
+            "self": "https://www.virustotal.com/api/v3/domains/polyfill.io"
+        },
+        "attributes": {
+            "last_analysis_results": {
+                "Acronis": {
+                    "method": "blacklist",
+                    "engine_name": "Acronis",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "0xSI_f33d": {
+                    "method": "blacklist",
+                    "engine_name": "0xSI_f33d",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Abusix": {
+                    "method": "blacklist",
+                    "engine_name": "Abusix",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "ADMINUSLabs": {
+                    "method": "blacklist",
+                    "engine_name": "ADMINUSLabs",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Axur": {
+                    "method": "blacklist",
+                    "engine_name": "Axur",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "ChainPatrol": {
+                    "method": "blacklist",
+                    "engine_name": "ChainPatrol",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Criminal IP": {
+                    "method": "blacklist",
+                    "engine_name": "Criminal IP",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "AILabs (MONITORAPP)": {
+                    "method": "blacklist",
+                    "engine_name": "AILabs (MONITORAPP)",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "AlienVault": {
+                    "method": "blacklist",
+                    "engine_name": "AlienVault",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "alphaMountain.ai": {
+                    "method": "blacklist",
+                    "engine_name": "alphaMountain.ai",
+                    "category": "suspicious",
+                    "result": "suspicious"
+                },
+                "AlphaSOC": {
+                    "method": "blacklist",
+                    "engine_name": "AlphaSOC",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Antiy-AVL": {
+                    "method": "blacklist",
+                    "engine_name": "Antiy-AVL",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "ArcSight Threat Intelligence": {
+                    "method": "blacklist",
+                    "engine_name": "ArcSight Threat Intelligence",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "AutoShun": {
+                    "method": "blacklist",
+                    "engine_name": "AutoShun",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "benkow.cc": {
+                    "method": "blacklist",
+                    "engine_name": "benkow.cc",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Bfore.Ai PreCrime": {
+                    "method": "blacklist",
+                    "engine_name": "Bfore.Ai PreCrime",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "BitDefender": {
+                    "method": "blacklist",
+                    "engine_name": "BitDefender",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Bkav": {
+                    "method": "blacklist",
+                    "engine_name": "Bkav",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Blueliv": {
+                    "method": "blacklist",
+                    "engine_name": "Blueliv",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Certego": {
+                    "method": "blacklist",
+                    "engine_name": "Certego",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Chong Lua Dao": {
+                    "method": "blacklist",
+                    "engine_name": "Chong Lua Dao",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "CINS Army": {
+                    "method": "blacklist",
+                    "engine_name": "CINS Army",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Cluster25": {
+                    "method": "blacklist",
+                    "engine_name": "Cluster25",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "CRDF": {
+                    "method": "blacklist",
+                    "engine_name": "CRDF",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "CSIS Security Group": {
+                    "method": "blacklist",
+                    "engine_name": "CSIS Security Group",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Snort IP sample list": {
+                    "method": "blacklist",
+                    "engine_name": "Snort IP sample list",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "CMC Threat Intelligence": {
+                    "method": "blacklist",
+                    "engine_name": "CMC Threat Intelligence",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Cyan": {
+                    "method": "blacklist",
+                    "engine_name": "Cyan",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Cyble": {
+                    "method": "blacklist",
+                    "engine_name": "Cyble",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "CyRadar": {
+                    "method": "blacklist",
+                    "engine_name": "CyRadar",
+                    "category": "malicious",
+                    "result": "malicious"
+                },
+                "DNS8": {
+                    "method": "blacklist",
+                    "engine_name": "DNS8",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Dr.Web": {
+                    "method": "blacklist",
+                    "engine_name": "Dr.Web",
+                    "category": "malicious",
+                    "result": "malicious"
+                },
+                "Ermes": {
+                    "method": "blacklist",
+                    "engine_name": "Ermes",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "ESET": {
+                    "method": "blacklist",
+                    "engine_name": "ESET",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "ESTsecurity": {
+                    "method": "blacklist",
+                    "engine_name": "ESTsecurity",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "EmergingThreats": {
+                    "method": "blacklist",
+                    "engine_name": "EmergingThreats",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Emsisoft": {
+                    "method": "blacklist",
+                    "engine_name": "Emsisoft",
+                    "category": "malicious",
+                    "result": "malware"
+                },
+                "Forcepoint ThreatSeeker": {
+                    "method": "blacklist",
+                    "engine_name": "Forcepoint ThreatSeeker",
+                    "category": "suspicious",
+                    "result": "suspicious"
+                },
+                "Fortinet": {
+                    "method": "blacklist",
+                    "engine_name": "Fortinet",
+                    "category": "malicious",
+                    "result": "malware"
+                },
+                "G-Data": {
+                    "method": "blacklist",
+                    "engine_name": "G-Data",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "GCP Abuse Intelligence": {
+                    "method": "blacklist",
+                    "engine_name": "GCP Abuse Intelligence",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Google Safebrowsing": {
+                    "method": "blacklist",
+                    "engine_name": "Google Safebrowsing",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "GreenSnow": {
+                    "method": "blacklist",
+                    "engine_name": "GreenSnow",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Gridinsoft": {
+                    "method": "blacklist",
+                    "engine_name": "Gridinsoft",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Heimdal Security": {
+                    "method": "blacklist",
+                    "engine_name": "Heimdal Security",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Hunt.io Intelligence": {
+                    "method": "blacklist",
+                    "engine_name": "Hunt.io Intelligence",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "IPsum": {
+                    "method": "blacklist",
+                    "engine_name": "IPsum",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Juniper Networks": {
+                    "method": "blacklist",
+                    "engine_name": "Juniper Networks",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Kaspersky": {
+                    "method": "blacklist",
+                    "engine_name": "Kaspersky",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Lionic": {
+                    "method": "blacklist",
+                    "engine_name": "Lionic",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Lumu": {
+                    "method": "blacklist",
+                    "engine_name": "Lumu",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "MalwarePatrol": {
+                    "method": "blacklist",
+                    "engine_name": "MalwarePatrol",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "MalwareURL": {
+                    "method": "blacklist",
+                    "engine_name": "MalwareURL",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Malwared": {
+                    "method": "blacklist",
+                    "engine_name": "Malwared",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Mimecast": {
+                    "method": "blacklist",
+                    "engine_name": "Mimecast",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Netcraft": {
+                    "method": "blacklist",
+                    "engine_name": "Netcraft",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "OpenPhish": {
+                    "method": "blacklist",
+                    "engine_name": "OpenPhish",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Phishing Database": {
+                    "method": "blacklist",
+                    "engine_name": "Phishing Database",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "PhishFort": {
+                    "method": "blacklist",
+                    "engine_name": "PhishFort",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "PhishLabs": {
+                    "method": "blacklist",
+                    "engine_name": "PhishLabs",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Phishtank": {
+                    "method": "blacklist",
+                    "engine_name": "Phishtank",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "PREBYTES": {
+                    "method": "blacklist",
+                    "engine_name": "PREBYTES",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "PrecisionSec": {
+                    "method": "blacklist",
+                    "engine_name": "PrecisionSec",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Quick Heal": {
+                    "method": "blacklist",
+                    "engine_name": "Quick Heal",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Quttera": {
+                    "method": "blacklist",
+                    "engine_name": "Quttera",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "SafeToOpen": {
+                    "method": "blacklist",
+                    "engine_name": "SafeToOpen",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Sansec eComscan": {
+                    "method": "blacklist",
+                    "engine_name": "Sansec eComscan",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "Scantitan": {
+                    "method": "blacklist",
+                    "engine_name": "Scantitan",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "SCUMWARE.org": {
+                    "method": "blacklist",
+                    "engine_name": "SCUMWARE.org",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Seclookup": {
+                    "method": "blacklist",
+                    "engine_name": "Seclookup",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "SecureBrain": {
+                    "method": "blacklist",
+                    "engine_name": "SecureBrain",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "SOCRadar": {
+                    "method": "blacklist",
+                    "engine_name": "SOCRadar",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Sophos": {
+                    "method": "blacklist",
+                    "engine_name": "Sophos",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Spam404": {
+                    "method": "blacklist",
+                    "engine_name": "Spam404",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "StopForumSpam": {
+                    "method": "blacklist",
+                    "engine_name": "StopForumSpam",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Sucuri SiteCheck": {
+                    "method": "blacklist",
+                    "engine_name": "Sucuri SiteCheck",
+                    "category": "malicious",
+                    "result": "malicious"
+                },
+                "ThreatHive": {
+                    "method": "blacklist",
+                    "engine_name": "ThreatHive",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Threatsourcing": {
+                    "method": "blacklist",
+                    "engine_name": "Threatsourcing",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Trustwave": {
+                    "method": "blacklist",
+                    "engine_name": "Trustwave",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Underworld": {
+                    "method": "blacklist",
+                    "engine_name": "Underworld",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "URLhaus": {
+                    "method": "blacklist",
+                    "engine_name": "URLhaus",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "URLQuery": {
+                    "method": "blacklist",
+                    "engine_name": "URLQuery",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Viettel Threat Intelligence": {
+                    "method": "blacklist",
+                    "engine_name": "Viettel Threat Intelligence",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "VIPRE": {
+                    "method": "blacklist",
+                    "engine_name": "VIPRE",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "VX Vault": {
+                    "method": "blacklist",
+                    "engine_name": "VX Vault",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "ViriBack": {
+                    "method": "blacklist",
+                    "engine_name": "ViriBack",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Webroot": {
+                    "method": "blacklist",
+                    "engine_name": "Webroot",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Yandex Safebrowsing": {
+                    "method": "blacklist",
+                    "engine_name": "Yandex Safebrowsing",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "ZeroCERT": {
+                    "method": "blacklist",
+                    "engine_name": "ZeroCERT",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "desenmascara.me": {
+                    "method": "blacklist",
+                    "engine_name": "desenmascara.me",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "malwares.com URL checker": {
+                    "method": "blacklist",
+                    "engine_name": "malwares.com URL checker",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "securolytics": {
+                    "method": "blacklist",
+                    "engine_name": "securolytics",
+                    "category": "harmless",
+                    "result": "clean"
+                },
+                "Xcitium Verdict Cloud": {
+                    "method": "blacklist",
+                    "engine_name": "Xcitium Verdict Cloud",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "zvelo": {
+                    "method": "blacklist",
+                    "engine_name": "zvelo",
+                    "category": "undetected",
+                    "result": "unrated"
+                },
+                "ZeroFox": {
+                    "method": "blacklist",
+                    "engine_name": "ZeroFox",
+                    "category": "undetected",
+                    "result": "unrated"
+                }
+            },
+            "last_https_certificate_date": 1719434712,
+            "last_update_date": 1719433962,
+            "jarm": "29d3dd00029d29d21c42d43d00041d44609a5a9a88e797f466e878a82e8365",
+            "categories": {
+                "alphaMountain.ai": "Information Technology, Malicious (alphaMountain.ai)",
+                "BitDefender": "computersandsoftware",
+                "Dr.Web": "known infection source",
+                "Sophos": "spyware and malware",
+                "Forcepoint ThreatSeeker": "malicious web sites. information technology"
+            },
+            "last_analysis_stats": {
+                "malicious": 5,
+                "suspicious": 2,
+                "undetected": 31,
+                "harmless": 57,
+                "timeout": 0
+            },
+            "last_dns_records_date": 1719437016,
+            "whois": "Admin City: REDACTED\nAdmin Country: REDACTED\nAdmin Organization: REDACTED\nAdmin Postal Code: REDACTED\nAdmin State/Province: REDACTED\nCreation Date: 2013-03-18T19:00:23Z\nDNSSEC: unsigned\nDomain Name: polyfill.io\nDomain Status: clientHold https://icann.org/epp#clientHold\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nName Server: a.dnspod.com\nName Server: b.dnspod.com\nName Server: c.dnspod.com\nRegistrant City: 3495bcf1839c6374\nRegistrant Country: IS\nRegistrant Email: fb6ff66ef97c0518s@\nRegistrant Fax Ext: 3495bcf1839c6374\nRegistrant Fax: 3495bcf1839c6374\nRegistrant Name: 3495bcf1839c6374\nRegistrant Organization: 4b7a0912c26a13e2\nRegistrant Phone Ext: 3495bcf1839c6374\nRegistrant Phone: 3495bcf1839c6374\nRegistrant Postal Code: 3495bcf1839c6374\nRegistrant State/Province: 3e0204199d8ebf9c\nRegistrant Street: 3495bcf1839c6374\nRegistrar Abuse Contact Email: abuse@namecheap.com\nRegistrar Abuse Contact Phone: +1.9854014545\nRegistrar IANA ID: 1068\nRegistrar URL: https://www.namecheap.com/\nRegistrar WHOIS Server: whois.namecheap.com\nRegistrar: NameCheap, Inc.\nRegistry Admin ID: REDACTED\nRegistry Domain ID: REDACTED\nRegistry Expiry Date: 2026-03-18T19:00:23Z\nRegistry Registrant ID: REDACTED\nRegistry Tech ID: REDACTED\nTech City: REDACTED\nTech Country: REDACTED\nTech Organization: REDACTED\nTech Postal Code: REDACTED\nTech State/Province: REDACTED\nUpdated Date: 2024-06-26T20:32:42Z",
+            "last_analysis_date": 1766666045,
+            "whois_date": 1765077546,
+            "rdap": {
+                "ldh_name": "polyfill.io",
+                "unicode_name": "polyfill.io",
+                "events": [
+                    {
+                        "event_action": "last update of RDAP database",
+                        "event_date": "2025-12-24T13:59:45Z",
+                        "event_actor": "",
+                        "links": []
+                    },
+                    {
+                        "event_action": "registration",
+                        "event_date": "2013-03-18T19:00:23Z",
+                        "event_actor": "",
+                        "links": []
+                    },
+                    {
+                        "event_action": "registrar expiration",
+                        "event_date": "2026-03-18T19:00:23Z",
+                        "event_actor": "",
+                        "links": []
+                    },
+                    {
+                        "event_action": "last changed",
+                        "event_date": "2024-02-24T19:52:02Z",
+                        "event_actor": "",
+                        "links": []
+                    }
+                ],
+                "links": [
+                    {
+                        "href": "https://rdap.namecheap.com/domain/polyfill.io",
+                        "rel": "self",
+                        "type": "application/rdap+json",
+                        "value": "https://rdap.namecheap.com/domain/polyfill.io",
+                        "title": "",
+                        "media": "",
+                        "href_lang": []
+                    }
+                ],
+                "notices": [
+                    {
+                        "title": "RDAP Terms of Service",
+                        "description": [
+                            "By querying Namecheap\u2019s  RDAP Domain Database, you agree to comply with Namecheap\u2019s RDAP Terms of Service, including but not limited to the terms herein,  and you acknowledge and agree that your information will be used in accordance with Namecheap Privacy Policy (https://www.namecheap.com/legal/general/privacy-policy/), including that Namecheap may retain certain details about queries to our RDAP Domain Database for the purposes of detecting and preventing misuse.  If you do not agree to any of these terms, do not access or use ,the RDAP Domain Database.",
+                            "Although Namecheap believes the data to be reliable, you agree and acknowledge that any information provided is 'as is' without any guarantee of accuracy.",
+                            "You further agree that you will:",
+                            "1) Not misuse the RDAP Domain Database. It is intended solely for query-based access and should not be used for or relied upon for any other purpose.",
+                            "2) Not use the RDAP Domain Database to allow, enable, or otherwise support the transmission of unsolicited, commercial advertising or solicitations.",
+                            "3) Not access the RDAP Domain Database through the use of high volume, automated electronic processes that send queries or data to the systems of Namecheap, any other ICANN-accredited registrar, or any registry operator.",
+                            "4) Not compile, repackage, disseminate, or otherwise use the information contained in the RDAP Domain Database in its entirety, or in any substantial portion, without our prior written permission.",
+                            "5) You will only use the information contained in the RDAP Domain Database for lawful purposes.",
+                            "We reserve the right to restrict or deny your access to the RDAP Domain Database if we suspect that you have failed to comply with these terms.",
+                            "We reserve the right to modify this agreement at any time."
+                        ],
+                        "links": [
+                            {
+                                "href": "https://www.namecheap.com/legal/domains/rdap-tos/",
+                                "rel": "terms-of-service",
+                                "type": "text/html",
+                                "value": "https://rdap.namecheap.com/domain/polyfill.io",
+                                "title": "",
+                                "media": "",
+                                "href_lang": []
+                            }
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "title": "Status Codes",
+                        "description": [
+                            "For more information on domain status codes, please visit https://icann.org/epp"
+                        ],
+                        "links": [
+                            {
+                                "href": "https://icann.org/epp",
+                                "rel": "glossary",
+                                "type": "text/html",
+                                "value": "https://rdap.namecheap.com/domain/polyfill.io",
+                                "title": "",
+                                "media": "",
+                                "href_lang": []
+                            }
+                        ],
+                        "type": ""
+                    },
+                    {
+                        "title": "RDDS Inaccuracy Complaint Form",
+                        "description": [
+                            "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf"
+                        ],
+                        "links": [
+                            {
+                                "href": "https://icann.org/wicf",
+                                "rel": "help",
+                                "type": "text/html",
+                                "value": "https://rdap.namecheap.com/domain/polyfill.io",
+                                "title": "",
+                                "media": "",
+                                "href_lang": []
+                            }
+                        ],
+                        "type": ""
+                    }
+                ],
+                "nameservers": [
+                    {
+                        "ldh_name": "a.dnspod.com",
+                        "unicode_name": "a.dnspod.com",
+                        "object_class_name": "nameserver",
+                        "handle": "",
+                        "events": [],
+                        "links": [],
+                        "notices": [],
+                        "status": [],
+                        "lang": "",
+                        "port43": "",
+                        "entities": [],
+                        "remarks": []
+                    },
+                    {
+                        "ldh_name": "b.dnspod.com",
+                        "unicode_name": "b.dnspod.com",
+                        "object_class_name": "nameserver",
+                        "handle": "",
+                        "events": [],
+                        "links": [],
+                        "notices": [],
+                        "status": [],
+                        "lang": "",
+                        "port43": "",
+                        "entities": [],
+                        "remarks": []
+                    },
+                    {
+                        "ldh_name": "c.dnspod.com",
+                        "unicode_name": "c.dnspod.com",
+                        "object_class_name": "nameserver",
+                        "handle": "",
+                        "events": [],
+                        "links": [],
+                        "notices": [],
+                        "status": [],
+                        "lang": "",
+                        "port43": "",
+                        "entities": [],
+                        "remarks": []
+                    }
+                ],
+                "rdap_conformance": [
+                    "rdap_level_0",
+                    "icann_rdap_response_profile_1",
+                    "icann_rdap_technical_implementation_guide_1",
+                    "redacted"
+                ],
+                "entities": [
+                    {
+                        "object_class_name": "entity",
+                        "handle": "1068",
+                        "vcard_array": [
+                            {
+                                "name": "version",
+                                "type": "text",
+                                "values": [
+                                    "4.0"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "fn",
+                                "type": "text",
+                                "values": [
+                                    "NAMECHEAP INC"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "tel",
+                                "parameters": {
+                                    "type": [
+                                        "voice"
+                                    ]
+                                },
+                                "type": "uri",
+                                "values": [
+                                    "tel:+1.6613102107"
+                                ]
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "values": [
+                                    "support@namecheap.com"
+                                ],
+                                "parameters": {}
+                            }
+                        ],
+                        "roles": [
+                            "registrar"
+                        ],
+                        "public_ids": [
+                            {
+                                "type": "IANA Registrar ID",
+                                "identifier": "1068"
+                            }
+                        ],
+                        "entities": [
+                            {
+                                "object_class_name": "entity",
+                                "vcard_array": [
+                                    {
+                                        "name": "version",
+                                        "type": "text",
+                                        "values": [
+                                            "4.0"
+                                        ],
+                                        "parameters": {}
+                                    },
+                                    {
+                                        "name": "fn",
+                                        "type": "text",
+                                        "values": [
+                                            "NAMECHEAP INC"
+                                        ],
+                                        "parameters": {}
+                                    },
+                                    {
+                                        "name": "tel",
+                                        "parameters": {
+                                            "type": [
+                                                "voice"
+                                            ]
+                                        },
+                                        "type": "uri",
+                                        "values": [
+                                            "tel:+1.9854014545"
+                                        ]
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "text",
+                                        "values": [
+                                            "abuse@namecheap.com"
+                                        ],
+                                        "parameters": {}
+                                    }
+                                ],
+                                "roles": [
+                                    "abuse"
+                                ],
+                                "handle": "",
+                                "public_ids": [],
+                                "entities": [],
+                                "remarks": [],
+                                "links": [],
+                                "events": [],
+                                "as_event_actor": [],
+                                "status": [],
+                                "port43": "",
+                                "networks": [],
+                                "autnums": [],
+                                "url": "",
+                                "lang": "",
+                                "rdap_conformance": []
+                            }
+                        ],
+                        "links": [
+                            {
+                                "href": "https://www.namecheap.com/",
+                                "rel": "about",
+                                "value": "https://rdap.namecheap.com/",
+                                "type": "",
+                                "title": "",
+                                "media": "",
+                                "href_lang": []
+                            }
+                        ],
+                        "remarks": [],
+                        "events": [],
+                        "as_event_actor": [],
+                        "status": [],
+                        "port43": "",
+                        "networks": [],
+                        "autnums": [],
+                        "url": "",
+                        "lang": "",
+                        "rdap_conformance": []
+                    },
+                    {
+                        "object_class_name": "entity",
+                        "handle": "4e716676f175426d7da508dc353e90d6-Namech",
+                        "vcard_array": [
+                            {
+                                "name": "version",
+                                "type": "text",
+                                "values": [
+                                    "4.0"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "fn",
+                                "type": "text",
+                                "values": [
+                                    ""
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "org",
+                                "type": "text",
+                                "values": [
+                                    "Privacy service provided by Withheld for Privacy ehf"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "adr",
+                                "parameters": {
+                                    "cc": [
+                                        "IS"
+                                    ]
+                                },
+                                "type": "text",
+                                "values": [
+                                    "",
+                                    "",
+                                    "Kalkofnsvegur 2",
+                                    "Reykjavik",
+                                    "Capital Region",
+                                    "101",
+                                    ""
+                                ]
+                            },
+                            {
+                                "name": "tel",
+                                "parameters": {
+                                    "type": [
+                                        "voice"
+                                    ]
+                                },
+                                "type": "uri",
+                                "values": [
+                                    "tel:+354.4212434"
+                                ]
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "values": [
+                                    "d9e2cb6e3aeb4d41a9bc877e584d6445.protect@withheldforprivacy.com"
+                                ],
+                                "parameters": {}
+                            }
+                        ],
+                        "roles": [
+                            "registrant"
+                        ],
+                        "public_ids": [],
+                        "entities": [],
+                        "remarks": [],
+                        "links": [],
+                        "events": [],
+                        "as_event_actor": [],
+                        "status": [],
+                        "port43": "",
+                        "networks": [],
+                        "autnums": [],
+                        "url": "",
+                        "lang": "",
+                        "rdap_conformance": []
+                    },
+                    {
+                        "object_class_name": "entity",
+                        "handle": "3300e895b0a44a9cf99e08dc353c6992-Namech",
+                        "vcard_array": [
+                            {
+                                "name": "version",
+                                "type": "text",
+                                "values": [
+                                    "4.0"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "fn",
+                                "type": "text",
+                                "values": [
+                                    ""
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "org",
+                                "type": "text",
+                                "values": [
+                                    "Privacy service provided by Withheld for Privacy ehf"
+                                ],
+                                "parameters": {}
+                            },
+                            {
+                                "name": "adr",
+                                "parameters": {
+                                    "cc": [
+                                        "IS"
+                                    ]
+                                },
+                                "type": "text",
+                                "values": [
+                                    "",
+                                    "",
+                                    "Kalkofnsvegur 2",
+                                    "Reykjavik",
+                                    "Capital Region",
+                                    "101",
+                                    ""
+                                ]
+                            },
+                            {
+                                "name": "tel",
+                                "parameters": {
+                                    "type": [
+                                        "voice"
+                                    ]
+                                },
+                                "type": "uri",
+                                "values": [
+                                    "tel:+354.4212434"
+                                ]
+                            },
+                            {
+                                "name": "email",
+                                "type": "text",
+                                "values": [
+                                    "d9e2cb6e3aeb4d41a9bc877e584d6445.protect@withheldforprivacy.com"
+                                ],
+                                "parameters": {}
+                            }
+                        ],
+                        "roles": [
+                            "technical"
+                        ],
+                        "public_ids": [],
+                        "entities": [],
+                        "remarks": [],
+                        "links": [],
+                        "events": [],
+                        "as_event_actor": [],
+                        "status": [],
+                        "port43": "",
+                        "networks": [],
+                        "autnums": [],
+                        "url": "",
+                        "lang": "",
+                        "rdap_conformance": []
+                    }
+                ],
+                "object_class_name": "domain",
+                "status": [
+                    "client hold",
+                    "client transfer prohibited"
+                ],
+                "secure_dns": {
+                    "delegation_signed": false,
+                    "zone_signed": false,
+                    "max_sig_life": 0,
+                    "ds_data": [],
+                    "key_data": []
+                },
+                "port43": "whois.namecheap.com",
+                "lang": "en",
+                "handle": "",
+                "punycode": "",
+                "type": "",
+                "switch_name": "",
+                "public_ids": [],
+                "remarks": [],
+                "nask0_state": "",
+                "variants": []
+            },
+            "tld": "io",
+            "popularity_ranks": {
+                "Majestic": {
+                    "rank": 255897,
+                    "timestamp": 1766587098
+                },
+                "Statvoo": {
+                    "timestamp": 1675097892,
+                    "rank": 664841
+                },
+                "Alexa": {
+                    "timestamp": 1675097892,
+                    "rank": 664841
+                },
+                "Cisco Umbrella": {
+                    "rank": 19855,
+                    "timestamp": 1766587082
+                },
+                "Cloudflare Radar": {
+                    "rank": 1000000,
+                    "timestamp": 1734426778
+                }
+            },
+            "expiration_date": 1773860423,
+            "last_modification_date": 1766669945,
+            "last_https_certificate": {
+                "cert_signature": {
+                    "signature_algorithm": "sha256RSA",
+                    "signature": "133ca465a7ef30448a8e6f234e8dd30c441625c39823093de49a137f688e7105a724225b31555acb6e02973daea4ed73b9c0c901656307fb2f16a55dee218fb735e02cc7d9d320e1522f346969408f53550db99e44718a4f7d7e2f2f48cdd80d1a622a09a0f4ef3301ce4af87f078a904de0b4d00db0aa79bba2a214c24f07f5cdda0ba9308d7a15b0b2e548b328c390ef75003cf9b3468b314124f99993327b2ce35b52c6e2d761e68ca57ed951794fc117b41f6dc41570a2dece505804bd48c1cbe34859c1152923339df362797ec98002d08c8e31b5ae56937e85e92dd15ac2740a293136e87bc5066a33ccdca0c7ea0fe4039613c2bc8f0a59018a417b52"
+                },
+                "extensions": {
+                    "authority_key_identifier": {
+                        "keyid": "8d8c5ec454ad8ae177e99bf99b05e1b8018d61e1"
+                    },
+                    "subject_key_identifier": "f9ee46c4fe66800c8fdd9a426df31f3640939617",
+                    "key_usage": [
+                        "digitalSignature",
+                        "keyEncipherment"
+                    ],
+                    "CA": false,
+                    "extended_key_usage": [
+                        "serverAuth",
+                        "clientAuth"
+                    ],
+                    "certificate_policies": [
+                        "1.3.6.1.4.1.6449.1.2.2.7",
+                        "2.23.140.1.2.1"
+                    ],
+                    "ca_information_access": {
+                        "CA Issuers": "http://crt.sectigo.com/SectigoRSADomainValidationSecureServerCA.crt",
+                        "OCSP": "http://ocsp.sectigo.com"
+                    },
+                    "1.3.6.1.4.1.11129.2.4.2": "0482016b0169007700cf1156eed52e7caff3875bd9692e9be91a71674ab017ec",
+                    "subject_alternative_name": [
+                        "*.polyfill.io",
+                        "polyfill.io"
+                    ]
+                },
+                "validity": {
+                    "not_after": "2025-02-19 23:59:59",
+                    "not_before": "2024-02-20 00:00:00"
+                },
+                "size": 1590,
+                "version": "V3",
+                "public_key": {
+                    "algorithm": "RSA",
+                    "rsa": {
+                        "modulus": "ebe8dc3f12c30c9e7c530c0eebb2b736b2e1278b2b2f00fda0fa73dc66ebffa76a98decbbbf5e242df94c78909a8db42acc259522c28100ae0203f08a4044253555925d517dadea04aa9514b3b762c45b70d4227d41197b808d25f3826952c0a67a81d7aa8f2c8495089b9101baf38a22bb9b8fdc964eee784d53dabb390ee699b8c57a3da2cc76b6e0976810830bc8e61c5a3be5ae9cc28bf464a05c422e474416ee6a5d89754db1291aafb5a61850ee81aa35a8086531202a6a53a1b4953e49c33445b9129d10f5161274c93a8e11eb5de9a3579c4ecda8faf96707c9301aae5d2047dc1588d84edd151b74c4517a50e6ab8aabf0ac96e6ee0f6101e79815f",
+                        "exponent": "10001",
+                        "key_size": 2048
+                    }
+                },
+                "thumbprint_sha256": "36a90a84e667598d29740784b948df46970f2f5859cdcc2af7df2a9191798bde",
+                "thumbprint": "19aa592fd98ac14899203c64454ee5a61de4920c",
+                "serial_number": "8f577839e10e1ff4e9e8bfb671866811",
+                "issuer": {
+                    "C": "GB",
+                    "ST": "Greater Manchester",
+                    "L": "Salford",
+                    "O": "Sectigo Limited",
+                    "CN": "Sectigo RSA Domain Validation Secure Server CA"
+                },
+                "subject": {
+                    "CN": "*.polyfill.io"
+                }
+            },
+            "registrar": "NameCheap, Inc.",
+            "total_votes": {
+                "harmless": 2,
+                "malicious": 22
+            },
+            "tags": [],
+            "creation_date": 1363633223,
+            "last_dns_records": [
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:3031::6815:12f9"
+                },
+                {
+                    "type": "CNAME",
+                    "ttl": 600,
+                    "value": "polyfill.io.cdn.cloudflare.net"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "104.21.18.249"
+                },
+                {
+                    "type": "A",
+                    "ttl": 300,
+                    "value": "172.67.184.69"
+                },
+                {
+                    "type": "AAAA",
+                    "ttl": 300,
+                    "value": "2606:4700:3037::ac43:b845"
+                }
+            ],
+            "reputation": -99
+        }
+    }
+}

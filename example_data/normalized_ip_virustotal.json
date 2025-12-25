@@ -1,0 +1,35 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-25T13:52:40.795110+00:00",
+    "source": "VirusTotal",
+    "ioc_type": "ip",
+    "ioc": "118.25.6.39",
+    "reputation_score": 0,
+    "malicious": false,
+    "confidence_score": null,
+    "detection_stats": {
+        "malicious": 0,
+        "suspicious": 0,
+        "harmless": 59,
+        "undetected": 36,
+        "total": 95
+    },
+    "geo_info": {
+        "country": "CN",
+        "continent": "AS"
+    },
+    "network_info": {
+        "asn": 45090,
+        "organization": "Shenzhen Tencent Computer Systems Company Limited"
+    },
+    "abuse_info": null,
+    "timestamps": {
+        "last_analysis": 1763459440,
+        "last_modified": 1765878793
+    },
+    "tags": [],
+    "categories": [],
+    "file_info": null,
+    "domain_info": null,
+    "additional_info": {}
+}

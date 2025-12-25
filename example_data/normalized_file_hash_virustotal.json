@@ -1,0 +1,74 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-25T13:52:40.795139+00:00",
+    "source": "VirusTotal",
+    "ioc_type": "file_hash",
+    "ioc": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+    "reputation_score": 3705,
+    "malicious": true,
+    "confidence_score": 85,
+    "detection_stats": {
+        "malicious": 65,
+        "suspicious": 0,
+        "harmless": 0,
+        "undetected": 4,
+        "total": 76
+    },
+    "geo_info": null,
+    "network_info": null,
+    "abuse_info": null,
+    "timestamps": {
+        "first_seen": 1148301722,
+        "last_seen": 1766670415,
+        "last_analysis": 1766670415,
+        "last_modified": 1766670440
+    },
+    "tags": [
+        "idle",
+        "long-sleeps",
+        "known-distributor",
+        "via-tor",
+        "powershell",
+        "detect-debug-environment",
+        "direct-cpu-clock-access",
+        "attachment"
+    ],
+    "categories": [
+        "malicious",
+        "MALWARE",
+        "TROJAN",
+        "malicious",
+        "MALWARE",
+        "TROJAN",
+        "malicious",
+        "MALWARE",
+        "TROJAN",
+        "EVADER",
+        "harmless",
+        "CLEAN"
+    ],
+    "file_info": {
+        "file_type": "Powershell",
+        "file_size": 68,
+        "magic": "EICAR virus test files",
+        "names": [
+            "eicar.com"
+        ],
+        "ssdeep": "3:a+JraNvsgzsVqSwHq9:tJuOgzsko",
+        "md5": "44d88612fea8a8f36de82e1278abb02f",
+        "sha1": "3395856ce81f2b7382dee72602f798b642f14140",
+        "sha256": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f"
+    },
+    "domain_info": null,
+    "additional_info": {
+        "times_submitted": 1118434,
+        "unique_sources": 3557,
+        "known_distributors": [
+            "Offensive Security"
+        ],
+        "products": [
+            "Kali Linux Nethunter",
+            "BlackArch Linux"
+        ]
+    }
+}

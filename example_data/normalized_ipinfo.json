@@ -1,0 +1,33 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-25T13:52:40.795071+00:00",
+    "source": "ipinfo.io",
+    "ioc_type": "ip",
+    "ioc": "118.25.6.39",
+    "reputation_score": null,
+    "malicious": null,
+    "confidence_score": null,
+    "detection_stats": null,
+    "geo_info": {
+        "country": "CN",
+        "city": "Shanghai",
+        "region": "Shanghai",
+        "coordinates": "31.2222,121.4581",
+        "timezone": "Asia/Shanghai",
+        "postal": "200000"
+    },
+    "network_info": {
+        "asn": "AS45090",
+        "organization": "Shenzhen Tencent Computer Systems Company Limited",
+        "hostnames": []
+    },
+    "abuse_info": null,
+    "timestamps": null,
+    "tags": [],
+    "categories": [],
+    "file_info": null,
+    "domain_info": null,
+    "additional_info": {
+        "anycast": null
+    }
+}

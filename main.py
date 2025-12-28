@@ -7,7 +7,7 @@ import json
 def main():
     """Example main function to demonstrate data retrieval, normalization, and enrichment. If you want to verify the actual functions themselves, run `pytest tests/` from the command line instead of this script.    
     """
-    # Test data retrieval
+    # # Test data retrieval
 
     # Example IOCs to query
     ip_address = "118.25.6.39"
@@ -18,6 +18,7 @@ def main():
     vt_client = rti.VirusTotalClient()
     abuse_client = rti.AbuseIPDBClient()
     ipinfo_client = rti.IPInfoClient()
+    alienvault_client = rti.AlienVaultClient()
 
     # Fetch data from VirusTotal
     vt_ip_data = vt_client.fetch_ip(ip_address)
@@ -30,6 +31,10 @@ def main():
     # Fetch data from IPInfo
     ipinfo_data = ipinfo_client.fetch_ip(ip_address)
 
+    # Fetch data from AlienVault OTX
+    alienvault_ip_data = alienvault_client.fetch_ip(ip_address)
+    alienvault_domain_data = alienvault_client.fetch_domain(domain_name)
+
     # Save data before normalization
     with open("ip_virustotal_result.json", "w") as f:
         json.dump(vt_ip_data, f, indent=4)
@@ -41,6 +46,10 @@ def main():
         json.dump(abuse_data, f, indent=4)
     with open("ipinfo_result.json", "w") as f:
         json.dump(ipinfo_data, f, indent=4)
+    with open("ip_alienvault_result.json", "w") as f:
+        json.dump(alienvault_ip_data, f, indent=4)
+    with open("domain_alienvault_result.json", "w") as f:
+        json.dump(alienvault_domain_data, f, indent=4)
 
     # Test data normalization
 
@@ -55,6 +64,10 @@ def main():
         vt_file_data = json.load(f)
     with open("domain_virustotal_result.json", "r") as f:
         vt_domain_data = json.load(f)
+    with open("ip_alienvault_result.json", "r") as f:
+        alienvault_ip_data = json.load(f)
+    with open("domain_alienvault_result.json", "r") as f:
+        alienvault_domain_data = json.load(f)
 
     # Normalize data
     abuseipdb_normalized = nti.normalize_abuseipdb_data(abuse_data)
@@ -62,6 +75,8 @@ def main():
     virustotal_ip_normalized = nti.normalize_ip_virustotal_data(vt_ip_data)
     virustotal_file_hash_normalized = nti.normalize_file_hash_virustotal_data(vt_file_data)
     virustotal_domain_normalized = nti.normalize_domain_virustotal_data(vt_domain_data)
+    alienvault_ip_normalized = nti.normalize_ip_alienvault_data(alienvault_ip_data)
+    alienvault_domain_normalized = nti.normalize_domain_alienvault_data(alienvault_domain_data)
 
     # Save normalized outputs as `normalized_*.json` files
     with open("normalized_abuseipdb.json", "w") as f:
@@ -74,6 +89,10 @@ def main():
         json.dump(virustotal_file_hash_normalized.__dict__, f, indent=4)
     with open("normalized_domain_virustotal.json", "w") as f:
         json.dump(virustotal_domain_normalized.__dict__, f, indent=4)
+    with open("normalized_ip_alienvault.json", "w") as f:
+        json.dump(alienvault_ip_normalized.__dict__, f, indent=4)
+    with open("normalized_domain_alienvault.json", "w") as f:
+        json.dump(alienvault_domain_normalized.__dict__, f, indent=4)
 
     # Test enrichment
 
@@ -88,6 +107,10 @@ def main():
         vt_file_data = json.load(f)
     with open("normalized_domain_virustotal.json", "r") as f:
         vt_domain_data = json.load(f)
+    with open("example_data/normalized_ip_alienvault.json", "r") as f:
+        alienvault_ip_data = json.load(f)
+    with open("example_data/normalized_domain_alienvault.json", "r") as f:
+        alienvault_domain_data = json.load(f)
 
     # Run combined comments
     enriched_comment = combined_enrichment(
@@ -96,6 +119,8 @@ def main():
         ip_virustotal_data=vt_ip_data,
         domain_virustotal_data=vt_domain_data,
         file_hash_virustotal_data=vt_file_data,
+        ip_alienvault_data=alienvault_ip_data,
+        domain_alienvault_data=alienvault_domain_data,
     )
 
     print(enriched_comment)

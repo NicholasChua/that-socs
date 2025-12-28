@@ -13,6 +13,8 @@ from helper_functions.enrichment import (
     enrich_ip_virustotal,
     enrich_domain_virustotal,
     enrich_file_hash_virustotal,
+    enrich_ip_alienvault,
+    enrich_domain_alienvault,
     combined_enrichment,
 )
 
@@ -58,6 +60,24 @@ def domain_virustotal_normalized_data():
     """Load normalized VirusTotal domain data from example file."""
     with open(
         os.path.join(EXAMPLE_DATA_DIR, "normalized_domain_virustotal.json"), "r"
+    ) as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def ip_alienvault_normalized_data():
+    """Load normalized AlienVault IP data from example file."""
+    with open(
+        os.path.join(EXAMPLE_DATA_DIR, "normalized_ip_alienvault.json"), "r"
+    ) as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def domain_alienvault_normalized_data():
+    """Load normalized AlienVault domain data from example file."""
+    with open(
+        os.path.join(EXAMPLE_DATA_DIR, "normalized_domain_alienvault.json"), "r"
     ) as f:
         return json.load(f)
 
@@ -353,6 +373,104 @@ class TestEnrichFileHashVirusTotal:
         assert len(result) > 0
 
 
+class TestEnrichIPAlienVault:
+    """Test suite for AlienVault IP enrichment."""
+
+    def test_enrich_ip_alienvault_returns_string(self, ip_alienvault_normalized_data):
+        """Test that enrich_ip_alienvault returns a string."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        assert isinstance(result, str)
+
+    def test_enrich_ip_alienvault_contains_analyzed_time(
+        self, ip_alienvault_normalized_data
+    ):
+        """Test that enrichment contains analyzed time."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        assert "Analyzed at:" in result
+
+    def test_enrich_ip_alienvault_contains_defanged_ip(
+        self, ip_alienvault_normalized_data
+    ):
+        """Test that enrichment contains defanged IP."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        assert "Defanged IP:" in result
+        assert "[.]" in result
+
+    def test_enrich_ip_alienvault_contains_status(self, ip_alienvault_normalized_data):
+        """Test that enrichment contains status."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        assert "Status:" in result
+
+    def test_enrich_ip_alienvault_contains_pulse_count(
+        self, ip_alienvault_normalized_data
+    ):
+        """Test that enrichment contains pulse count."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        if ip_alienvault_normalized_data.get("abuse_info"):
+            assert "Pulse Count:" in result
+
+    def test_enrich_ip_alienvault_not_empty(self, ip_alienvault_normalized_data):
+        """Test that enrichment result is not empty."""
+        result = enrich_ip_alienvault(ip_alienvault_normalized_data)
+        assert len(result) > 0
+
+
+class TestEnrichDomainAlienVault:
+    """Test suite for AlienVault domain enrichment."""
+
+    def test_enrich_domain_alienvault_returns_string(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrich_domain_alienvault returns a string."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert isinstance(result, str)
+
+    def test_enrich_domain_alienvault_contains_analyzed_time(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment contains analyzed time."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert "Analyzed at:" in result
+
+    def test_enrich_domain_alienvault_contains_link(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment contains AlienVault link."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert "AlienVault OTX Link:" in result
+        assert "otx.alienvault.com" in result
+
+    def test_enrich_domain_alienvault_contains_defanged_domain(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment contains defanged domain."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert "Defanged Domain:" in result
+        assert "[.]" in result
+
+    def test_enrich_domain_alienvault_contains_status(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment contains status."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert "Status:" in result
+
+    def test_enrich_domain_alienvault_contains_pulse_count(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment contains pulse count."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        if domain_alienvault_normalized_data.get("abuse_info"):
+            assert "Pulse Count:" in result
+
+    def test_enrich_domain_alienvault_not_empty(
+        self, domain_alienvault_normalized_data
+    ):
+        """Test that enrichment result is not empty."""
+        result = enrich_domain_alienvault(domain_alienvault_normalized_data)
+        assert len(result) > 0
+
+
 class TestCombinedEnrichment:
     """Test suite for combined enrichment functionality."""
 
@@ -423,6 +541,8 @@ class TestCombinedEnrichment:
         ip_virustotal_normalized_data,
         domain_virustotal_normalized_data,
         file_hash_virustotal_normalized_data,
+        ip_alienvault_normalized_data,
+        domain_alienvault_normalized_data,
     ):
         """Test that combined enrichment includes all sections when all data provided."""
         result = combined_enrichment(
@@ -431,12 +551,16 @@ class TestCombinedEnrichment:
             ip_virustotal_data=ip_virustotal_normalized_data,
             domain_virustotal_data=domain_virustotal_normalized_data,
             file_hash_virustotal_data=file_hash_virustotal_normalized_data,
+            ip_alienvault_data=ip_alienvault_normalized_data,
+            domain_alienvault_data=domain_alienvault_normalized_data,
         )
         assert "ABUSEIPDB ANALYSIS" in result
         assert "IPINFO.IO ANALYSIS" in result
         assert "VIRUSTOTAL IP ANALYSIS" in result
         assert "VIRUSTOTAL DOMAIN ANALYSIS" in result
         assert "VIRUSTOTAL FILE HASH ANALYSIS" in result
+        assert "ALIENVAULT OTX IP ANALYSIS" in result
+        assert "ALIENVAULT OTX DOMAIN ANALYSIS" in result
 
     def test_combined_enrichment_no_data(self):
         """Test that combined enrichment handles no data gracefully."""
@@ -478,6 +602,8 @@ class TestEnrichmentConsistency:
         ip_virustotal_normalized_data,
         domain_virustotal_normalized_data,
         file_hash_virustotal_normalized_data,
+        ip_alienvault_normalized_data,
+        domain_alienvault_normalized_data,
     ):
         """Test that all enrichment functions return strings."""
         results = [
@@ -486,6 +612,8 @@ class TestEnrichmentConsistency:
             enrich_ip_virustotal(ip_virustotal_normalized_data),
             enrich_domain_virustotal(domain_virustotal_normalized_data),
             enrich_file_hash_virustotal(file_hash_virustotal_normalized_data),
+            enrich_ip_alienvault(ip_alienvault_normalized_data),
+            enrich_domain_alienvault(domain_alienvault_normalized_data),
         ]
 
         for result in results:
@@ -499,6 +627,8 @@ class TestEnrichmentConsistency:
         ip_virustotal_normalized_data,
         domain_virustotal_normalized_data,
         file_hash_virustotal_normalized_data,
+        ip_alienvault_normalized_data,
+        domain_alienvault_normalized_data,
     ):
         """Test that all enrichment functions include analyzed time."""
         results = [
@@ -507,6 +637,8 @@ class TestEnrichmentConsistency:
             enrich_ip_virustotal(ip_virustotal_normalized_data),
             enrich_domain_virustotal(domain_virustotal_normalized_data),
             enrich_file_hash_virustotal(file_hash_virustotal_normalized_data),
+            enrich_ip_alienvault(ip_alienvault_normalized_data),
+            enrich_domain_alienvault(domain_alienvault_normalized_data),
         ]
 
         for result in results:
@@ -519,6 +651,8 @@ class TestEnrichmentConsistency:
         ip_virustotal_normalized_data,
         domain_virustotal_normalized_data,
         file_hash_virustotal_normalized_data,
+        ip_alienvault_normalized_data,
+        domain_alienvault_normalized_data,
     ):
         """Test that all enrichment functions include source links."""
         results = [
@@ -532,6 +666,11 @@ class TestEnrichmentConsistency:
             (
                 enrich_file_hash_virustotal(file_hash_virustotal_normalized_data),
                 "virustotal.com",
+            ),
+            (enrich_ip_alienvault(ip_alienvault_normalized_data), "otx.alienvault.com"),
+            (
+                enrich_domain_alienvault(domain_alienvault_normalized_data),
+                "otx.alienvault.com",
             ),
         ]
 

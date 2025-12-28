@@ -6,6 +6,7 @@ Supported environment variables:
 - `VIRUSTOTAL_API_KEY`
 - `ABUSEIPDB_API_KEY`
 - `IPINFO_API_KEY`
+- `ALIENVAULT_API_KEY`
 
 The clients expose simple `fetch_*` methods returning parsed JSON responses from the respective services.
 """
@@ -130,6 +131,49 @@ class IPInfoClient(BaseClient):
             {"token": self.api_key} if self.api_key else None
         )  # ipinfo allows unauthenticated requests with limits
         response = self.request("GET", url, params=params, timeout=10)
+        return response.json()
+
+
+class AlienVaultClient(BaseClient):
+    """Client for querying AlienVault OTX for threat intelligence data.
+
+    Args:
+        session (requests.Session | None): Optional session passed to :class:`BaseClient`.
+
+    Attributes:
+        api_key (str | None): Value of the `ALIENVAULT_API_KEY` environment variable.
+    """
+
+    def __init__(self, session: requests.Session | None = None):
+        super().__init__(session=session)
+        self.api_key = os.getenv("ALIENVAULT_API_KEY")
+
+    def fetch_ip(self, ip: str) -> dict:
+        """Fetch IP information from AlienVault OTX.
+
+        Args:
+            ip (str): IP address to query.
+
+        Returns:
+            dict: Parsed JSON response.
+        """
+        url = f"https://otx.alienvault.com/api/v1/indicators/IPv4/{ip}/general"
+        headers = {"X-OTX-API-KEY": self.api_key}
+        response = self.request("GET", url, headers=headers, timeout=10)
+        return response.json()
+
+    def fetch_domain(self, domain: str) -> dict:
+        """Fetch domain information from AlienVault OTX.
+
+        Args:
+            domain (str): Domain name to query.
+
+        Returns:
+            dict: Parsed JSON response.
+        """
+        url = f"https://otx.alienvault.com/api/v1/indicators/domain/{domain}/general"
+        headers = {"X-OTX-API-KEY": self.api_key}
+        response = self.request("GET", url, headers=headers, timeout=10)
         return response.json()
 
 

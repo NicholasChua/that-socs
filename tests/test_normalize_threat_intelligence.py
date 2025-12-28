@@ -14,6 +14,8 @@ from helper_functions.normalize_threat_intelligence import (
     normalize_ip_virustotal_data,
     normalize_file_hash_virustotal_data,
     normalize_domain_virustotal_data,
+    normalize_ip_alienvault_data,
+    normalize_domain_alienvault_data,
 )
 
 
@@ -56,6 +58,22 @@ def domain_virustotal_raw_data():
     """Load raw VirusTotal domain data from example file."""
     with open(
         os.path.join(EXAMPLE_DATA_DIR, "domain_virustotal_result.json"), "r"
+    ) as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def ip_alienvault_raw_data():
+    """Load raw AlienVault IP data from example file."""
+    with open(os.path.join(EXAMPLE_DATA_DIR, "ip_alienvault_result.json"), "r") as f:
+        return json.load(f)
+
+
+@pytest.fixture
+def domain_alienvault_raw_data():
+    """Load raw AlienVault domain data from example file."""
+    with open(
+        os.path.join(EXAMPLE_DATA_DIR, "domain_alienvault_result.json"), "r"
     ) as f:
         return json.load(f)
 
@@ -349,6 +367,125 @@ class TestNormalizeVirusTotalDomain:
         assert result.normalized_time is not None
 
 
+class TestNormalizeAlienVaultIP:
+    """Test suite for AlienVault OTX IP data normalization."""
+
+    def test_normalize_av_ip_returns_correct_schema(self, ip_alienvault_raw_data):
+        """Test that normalize_ip_alienvault_data returns ThreatIntelligenceNormalizedSchema instance."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert isinstance(result, ThreatIntelligenceNormalizedSchema)
+
+    def test_normalize_av_ip_source_field(self, ip_alienvault_raw_data):
+        """Test that source field is correctly set to 'AlienVault OTX'."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.source == "AlienVault OTX"
+
+    def test_normalize_av_ip_ioc_type(self, ip_alienvault_raw_data):
+        """Test that ioc_type field is correctly set to 'ip'."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.ioc_type == "ip"
+
+    def test_normalize_av_ip_ioc_value(self, ip_alienvault_raw_data):
+        """Test that ioc field contains the IP address."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.ioc is not None
+        assert len(result.ioc) > 0
+
+    def test_normalize_av_ip_malicious_flag(self, ip_alienvault_raw_data):
+        """Test that malicious flag is set based on reputation and pulse count."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert isinstance(result.malicious, bool)
+
+    def test_normalize_av_ip_reputation_score(self, ip_alienvault_raw_data):
+        """Test that reputation_score is extracted."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        # reputation_score may be None or an integer
+        if result.reputation_score is not None:
+            assert isinstance(result.reputation_score, int)
+
+    def test_normalize_av_ip_geo_info(self, ip_alienvault_raw_data):
+        """Test that geo_info dictionary is populated."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.geo_info is not None
+        assert isinstance(result.geo_info, dict)
+
+    def test_normalize_av_ip_network_info(self, ip_alienvault_raw_data):
+        """Test that network_info dictionary is populated."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.network_info is not None
+        assert isinstance(result.network_info, dict)
+
+    def test_normalize_av_ip_tags_categories(self, ip_alienvault_raw_data):
+        """Test that tags and categories are populated."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert isinstance(result.tags, list)
+        assert isinstance(result.categories, list)
+
+    def test_normalize_av_ip_schema_version(self, ip_alienvault_raw_data):
+        """Test that schema_version is set."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.schema_version is not None
+
+    def test_normalize_av_ip_normalized_time(self, ip_alienvault_raw_data):
+        """Test that normalized_time is set."""
+        result = normalize_ip_alienvault_data(ip_alienvault_raw_data)
+        assert result.normalized_time is not None
+
+
+class TestNormalizeAlienVaultDomain:
+    """Test suite for AlienVault OTX domain data normalization."""
+
+    def test_normalize_av_domain_returns_correct_schema(
+        self, domain_alienvault_raw_data
+    ):
+        """Test that normalize_domain_alienvault_data returns ThreatIntelligenceNormalizedSchema instance."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert isinstance(result, ThreatIntelligenceNormalizedSchema)
+
+    def test_normalize_av_domain_source_field(self, domain_alienvault_raw_data):
+        """Test that source field is correctly set to 'AlienVault OTX'."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.source == "AlienVault OTX"
+
+    def test_normalize_av_domain_ioc_type(self, domain_alienvault_raw_data):
+        """Test that ioc_type field is correctly set to 'domain'."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.ioc_type == "domain"
+
+    def test_normalize_av_domain_ioc_value(self, domain_alienvault_raw_data):
+        """Test that ioc field contains the domain name."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.ioc is not None
+        assert len(result.ioc) > 0
+
+    def test_normalize_av_domain_malicious_flag(self, domain_alienvault_raw_data):
+        """Test that malicious flag is set based on pulse count."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert isinstance(result.malicious, bool)
+
+    def test_normalize_av_domain_domain_info(self, domain_alienvault_raw_data):
+        """Test that domain_info dictionary is populated."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.domain_info is not None
+        assert isinstance(result.domain_info, dict)
+
+    def test_normalize_av_domain_tags_categories(self, domain_alienvault_raw_data):
+        """Test that tags and categories are populated."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert isinstance(result.tags, list)
+        assert isinstance(result.categories, list)
+
+    def test_normalize_av_domain_schema_version(self, domain_alienvault_raw_data):
+        """Test that schema_version is set."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.schema_version is not None
+
+    def test_normalize_av_domain_normalized_time(self, domain_alienvault_raw_data):
+        """Test that normalized_time is set."""
+        result = normalize_domain_alienvault_data(domain_alienvault_raw_data)
+        assert result.normalized_time is not None
+
+
 class TestNormalizationConsistency:
     """Test suite for consistency across different normalization functions."""
 
@@ -359,6 +496,8 @@ class TestNormalizationConsistency:
         ip_virustotal_raw_data,
         file_hash_virustotal_raw_data,
         domain_virustotal_raw_data,
+        ip_alienvault_raw_data,
+        domain_alienvault_raw_data,
     ):
         """Test that all normalization functions set schema_version."""
         results = [
@@ -367,6 +506,8 @@ class TestNormalizationConsistency:
             normalize_ip_virustotal_data(ip_virustotal_raw_data),
             normalize_file_hash_virustotal_data(file_hash_virustotal_raw_data),
             normalize_domain_virustotal_data(domain_virustotal_raw_data),
+            normalize_ip_alienvault_data(ip_alienvault_raw_data),
+            normalize_domain_alienvault_data(domain_alienvault_raw_data),
         ]
 
         for result in results:
@@ -379,6 +520,8 @@ class TestNormalizationConsistency:
         ip_virustotal_raw_data,
         file_hash_virustotal_raw_data,
         domain_virustotal_raw_data,
+        ip_alienvault_raw_data,
+        domain_alienvault_raw_data,
     ):
         """Test that all normalization functions set normalized_time."""
         results = [
@@ -387,6 +530,8 @@ class TestNormalizationConsistency:
             normalize_ip_virustotal_data(ip_virustotal_raw_data),
             normalize_file_hash_virustotal_data(file_hash_virustotal_raw_data),
             normalize_domain_virustotal_data(domain_virustotal_raw_data),
+            normalize_ip_alienvault_data(ip_alienvault_raw_data),
+            normalize_domain_alienvault_data(domain_alienvault_raw_data),
         ]
 
         for result in results:
@@ -399,6 +544,8 @@ class TestNormalizationConsistency:
         ip_virustotal_raw_data,
         file_hash_virustotal_raw_data,
         domain_virustotal_raw_data,
+        ip_alienvault_raw_data,
+        domain_alienvault_raw_data,
     ):
         """Test that all normalization functions set source field."""
         results = [
@@ -407,6 +554,8 @@ class TestNormalizationConsistency:
             normalize_ip_virustotal_data(ip_virustotal_raw_data),
             normalize_file_hash_virustotal_data(file_hash_virustotal_raw_data),
             normalize_domain_virustotal_data(domain_virustotal_raw_data),
+            normalize_ip_alienvault_data(ip_alienvault_raw_data),
+            normalize_domain_alienvault_data(domain_alienvault_raw_data),
         ]
 
         for result in results:
@@ -420,6 +569,8 @@ class TestNormalizationConsistency:
         ip_virustotal_raw_data,
         file_hash_virustotal_raw_data,
         domain_virustotal_raw_data,
+        ip_alienvault_raw_data,
+        domain_alienvault_raw_data,
     ):
         """Test that all normalization functions set ioc field."""
         results = [
@@ -428,6 +579,8 @@ class TestNormalizationConsistency:
             normalize_ip_virustotal_data(ip_virustotal_raw_data),
             normalize_file_hash_virustotal_data(file_hash_virustotal_raw_data),
             normalize_domain_virustotal_data(domain_virustotal_raw_data),
+            normalize_ip_alienvault_data(ip_alienvault_raw_data),
+            normalize_domain_alienvault_data(domain_alienvault_raw_data),
         ]
 
         for result in results:
@@ -441,6 +594,8 @@ class TestNormalizationConsistency:
         ip_virustotal_raw_data,
         file_hash_virustotal_raw_data,
         domain_virustotal_raw_data,
+        ip_alienvault_raw_data,
+        domain_alienvault_raw_data,
     ):
         """Test that all normalization functions set ioc_type field."""
         results = [
@@ -449,6 +604,8 @@ class TestNormalizationConsistency:
             normalize_ip_virustotal_data(ip_virustotal_raw_data),
             normalize_file_hash_virustotal_data(file_hash_virustotal_raw_data),
             normalize_domain_virustotal_data(domain_virustotal_raw_data),
+            normalize_ip_alienvault_data(ip_alienvault_raw_data),
+            normalize_domain_alienvault_data(domain_alienvault_raw_data),
         ]
 
         valid_ioc_types = {"ip", "file_hash", "domain", "url"}

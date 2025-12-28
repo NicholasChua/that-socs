@@ -1,14 +1,12 @@
 """Thin wrappers for normalizing threat intelligence data from several Threat Intelligence sources into a common schema.
 
-This module supports normalization for VirusTotal, AbuseIPDB and ipinfo.io threat intelligence data.
+This module supports normalization for VirusTotal, AbuseIPDB, ipinfo.io, and AlienVault OTX threat intelligence data.
 """
 
 from datetime import datetime, timezone
 from helper_functions.logging_config import setup_logger
 
-logger = setup_logger(
-    name="normalize_threat_intelligence", log_file="that-socs.log"
-)
+logger = setup_logger(name="normalize_threat_intelligence", log_file="that-socs.log")
 
 
 # TODO: Fine tune schema as needed
@@ -196,7 +194,12 @@ def normalize_ip_virustotal_data(raw_data: dict) -> ThreatIntelligenceNormalized
     categories = list(attributes.get("categories", {}).values())
 
     # Logging for debugging
-    logger.debug("Normalized VirusTotal IP data for IOC %s: malicious=%s, reputation=%s", ioc, malicious, reputation)
+    logger.debug(
+        "Normalized VirusTotal IP data for IOC %s: malicious=%s, reputation=%s",
+        ioc,
+        malicious,
+        reputation,
+    )
 
     return ThreatIntelligenceNormalizedSchema(
         source="VirusTotal",
@@ -295,7 +298,12 @@ def normalize_file_hash_virustotal_data(
     }
 
     # Logging for debugging
-    logger.debug("Normalized VirusTotal file hash data for IOC %s: malicious=%s, reputation=%s", ioc, malicious, reputation)
+    logger.debug(
+        "Normalized VirusTotal file hash data for IOC %s: malicious=%s, reputation=%s",
+        ioc,
+        malicious,
+        reputation,
+    )
 
     return ThreatIntelligenceNormalizedSchema(
         source="VirusTotal",
@@ -404,7 +412,12 @@ def normalize_domain_virustotal_data(
     }
 
     # Logging for debugging
-    logger.debug("Normalized VirusTotal domain data for IOC %s: malicious=%s, reputation=%s", ioc, malicious, reputation)
+    logger.debug(
+        "Normalized VirusTotal domain data for IOC %s: malicious=%s, reputation=%s",
+        ioc,
+        malicious,
+        reputation,
+    )
 
     return ThreatIntelligenceNormalizedSchema(
         source="VirusTotal",
@@ -472,7 +485,12 @@ def normalize_abuseipdb_data(raw_data: dict) -> ThreatIntelligenceNormalizedSche
     }
 
     # Logging for debugging
-    logger.debug("Normalized AbuseIPDB data for IOC %s: malicious=%s, abuse_confidence=%s", ioc, malicious, abuse_confidence)
+    logger.debug(
+        "Normalized AbuseIPDB data for IOC %s: malicious=%s, abuse_confidence=%s",
+        ioc,
+        malicious,
+        abuse_confidence,
+    )
 
     return ThreatIntelligenceNormalizedSchema(
         source="AbuseIPDB",
@@ -540,5 +558,275 @@ def normalize_ipinfo_data(raw_data: dict) -> ThreatIntelligenceNormalizedSchema:
         ioc=ioc,
         geo_info=geo_info,
         network_info=network_info,
+        additional_info=additional_info,
+    )
+
+
+def normalize_ip_alienvault_data(raw_data: dict) -> ThreatIntelligenceNormalizedSchema:
+    """Normalize AlienVault OTX IP data into the common schema.
+
+    Args:
+        raw_data (dict): Raw JSON data from AlienVault OTX for an IP.
+
+    Returns:
+        ThreatIntelligenceNormalizedSchema: Normalized threat intelligence data.
+    """
+    # Extract IP address
+    ioc = raw_data.get("indicator", "")
+
+    # Extract reputation score
+    reputation = raw_data.get("reputation", 0)
+
+    # Extract pulse information
+    pulse_info = raw_data.get("pulse_info", {})
+    pulse_count = pulse_info.get("count", 0)
+    pulses = pulse_info.get("pulses", [])
+
+    # Determine if malicious based on reputation and pulse count
+    # Negative reputation or multiple pulses may indicate malicious activity
+    malicious = reputation < 0 or pulse_count > 0
+
+    # Extract validation and false positive info
+    validation = raw_data.get("validation", [])
+    false_positive = raw_data.get("false_positive", [])
+
+    # Check if whitelisted
+    is_whitelisted = any(v.get("name") == "Whitelisted IP" for v in validation)
+
+    # Extract tags and categories from pulses
+    tags = []
+    categories = []
+    adversaries = []
+    malware_families = []
+
+    for pulse in pulses:
+        pulse_tags = pulse.get("tags", [])
+        tags.extend(pulse_tags)
+
+        # Extract adversary info
+        adversary = pulse.get("adversary", "")
+        if adversary:
+            adversaries.append(adversary)
+
+        # Extract malware families
+        malware = pulse.get("malware_families", [])
+        if malware:
+            for family in malware:
+                if isinstance(family, dict):
+                    malware_families.append(family.get("display_name", ""))
+                else:
+                    malware_families.append(str(family))
+
+    # Deduplicate tags
+    tags = list(set(tags))
+    categories = list(set(malware_families))
+
+    # Build geo info
+    geo_info = {
+        "country": raw_data.get("country_code"),
+        "country_name": raw_data.get("country_name"),
+        "city": raw_data.get("city"),
+        "region": raw_data.get("region"),
+        "coordinates": (
+            f"{raw_data.get('latitude')},{raw_data.get('longitude')}"
+            if raw_data.get("latitude")
+            else None
+        ),
+        "continent_code": raw_data.get("continent_code"),
+    }
+
+    # Build network info
+    asn_info = raw_data.get("asn", "")
+    network_info = {
+        "asn": asn_info.split()[0] if asn_info else None,
+        "organization": " ".join(asn_info.split()[1:]) if asn_info else None,
+    }
+
+    # Build abuse info
+    abuse_info = {
+        "is_whitelisted": is_whitelisted,
+        "pulse_count": pulse_count,
+        "false_positive_count": len(false_positive),
+    }
+
+    # Calculate confidence score based on pulse count and validation
+    confidence_score = None
+    if pulse_count > 0:
+        # Higher pulse count = higher confidence in malicious verdict
+        confidence_score = min(pulse_count * 10, 100)  # Cap at 100
+
+    # Reduce confidence if whitelisted or false positives exist
+    if is_whitelisted:
+        confidence_score = 0
+        malicious = False
+    elif len(false_positive) > 0:
+        confidence_score = max(0, (confidence_score or 0) - len(false_positive) * 10)
+
+    # Additional info
+    additional_info = {
+        "whois_link": raw_data.get("whois"),
+        "sections": raw_data.get("sections", []),
+        "validation": validation,
+        "false_positive": false_positive,
+        "adversaries": list(set(adversaries)),
+    }
+
+    # Logging for debugging
+    logger.debug(
+        "Normalized AlienVault IP data for IOC %s: malicious=%s, reputation=%s, pulse_count=%s",
+        ioc,
+        malicious,
+        reputation,
+        pulse_count,
+    )
+
+    return ThreatIntelligenceNormalizedSchema(
+        source="AlienVault OTX",
+        ioc_type="ip",
+        ioc=ioc,
+        reputation_score=reputation,
+        malicious=malicious,
+        confidence_score=confidence_score,
+        geo_info=geo_info,
+        network_info=network_info,
+        abuse_info=abuse_info,
+        tags=tags,
+        categories=categories,
+        additional_info=additional_info,
+    )
+
+
+def normalize_domain_alienvault_data(
+    raw_data: dict,
+) -> ThreatIntelligenceNormalizedSchema:
+    """Normalize AlienVault OTX domain data into the common schema.
+
+    Args:
+        raw_data (dict): Raw JSON data from AlienVault OTX for a domain.
+
+    Returns:
+        ThreatIntelligenceNormalizedSchema: Normalized threat intelligence data.
+    """
+    # Extract domain
+    ioc = raw_data.get("indicator", "")
+
+    # Extract pulse information
+    pulse_info = raw_data.get("pulse_info", {})
+    pulse_count = pulse_info.get("count", 0)
+    pulses = pulse_info.get("pulses", [])
+
+    # Extract validation and false positive info
+    validation = raw_data.get("validation", [])
+    false_positive = raw_data.get("false_positive", [])
+
+    # Check if whitelisted
+    is_whitelisted = any("Whitelisted domain" in v.get("name", "") for v in validation)
+
+    # Determine if malicious based on pulse count and validation
+    malicious = pulse_count > 0 and not is_whitelisted
+
+    # Extract tags and categories from pulses
+    tags = []
+    categories = []
+    adversaries = []
+    malware_families = []
+
+    for pulse in pulses:
+        pulse_tags = pulse.get("tags", [])
+        tags.extend(pulse_tags)
+
+        # Extract adversary info
+        adversary = pulse.get("adversary", "")
+        if adversary:
+            adversaries.append(adversary)
+
+        # Extract malware families
+        malware = pulse.get("malware_families", [])
+        if malware:
+            for family in malware:
+                if isinstance(family, dict):
+                    malware_families.append(family.get("display_name", ""))
+                else:
+                    malware_families.append(str(family))
+
+    # Deduplicate tags and categories
+    tags = list(set(tags))
+    categories = list(set(malware_families))
+
+    # Calculate confidence score based on pulse count and validation
+    confidence_score = None
+    if pulse_count > 0:
+        # Higher pulse count = higher confidence
+        confidence_score = min(pulse_count * 5, 100)  # Cap at 100
+
+    # Adjust confidence based on validation
+    if is_whitelisted:
+        confidence_score = 0
+        malicious = False
+    elif len(false_positive) > 0:
+        confidence_score = max(0, (confidence_score or 0) - len(false_positive) * 10)
+
+    # Extract Alexa rank from validation if available
+    alexa_rank = None
+    akamai_rank = None
+    for v in validation:
+        if "Akamai" in v.get("name", ""):
+            message = v.get("message", "")
+            # Parse "Akamai rank: #1458"
+            if "#" in message:
+                try:
+                    akamai_rank = int(message.split("#")[1])
+                except (ValueError, IndexError):
+                    pass
+        elif "Alexa" in v.get("name", ""):
+            message = v.get("message", "")
+            if "#" in message:
+                try:
+                    alexa_rank = int(message.split("#")[1])
+                except (ValueError, IndexError):
+                    pass
+
+    # Build domain info
+    domain_info = {
+        "alexa_rank": alexa_rank,
+        "akamai_rank": akamai_rank,
+    }
+
+    # Build abuse info
+    abuse_info = {
+        "is_whitelisted": is_whitelisted,
+        "pulse_count": pulse_count,
+        "false_positive_count": len(false_positive),
+    }
+
+    # Additional info
+    additional_info = {
+        "whois_link": raw_data.get("whois"),
+        "alexa_link": raw_data.get("alexa"),
+        "sections": raw_data.get("sections", []),
+        "validation": validation,
+        "false_positive": false_positive,
+        "adversaries": list(set(adversaries)),
+    }
+
+    # Logging for debugging
+    logger.debug(
+        "Normalized AlienVault domain data for IOC %s: malicious=%s, pulse_count=%s, whitelisted=%s",
+        ioc,
+        malicious,
+        pulse_count,
+        is_whitelisted,
+    )
+
+    return ThreatIntelligenceNormalizedSchema(
+        source="AlienVault OTX",
+        ioc_type="domain",
+        ioc=ioc,
+        malicious=malicious,
+        confidence_score=confidence_score,
+        domain_info=domain_info,
+        abuse_info=abuse_info,
+        tags=tags,
+        categories=categories,
         additional_info=additional_info,
     )

@@ -22,6 +22,7 @@ This project was tested on Python 3.14.2.
 - VirusTotal API key (free tier is sufficient)
 - ipinfo.io API key (free tier is sufficient)
 - AbuseIPDB API key (free tier is sufficient)
+- AlienVault OTX API key (free tier is sufficient)
 - .env file containing API keys
 
 ## How to Get API Keys
@@ -64,6 +65,12 @@ This project was tested on Python 3.14.2.
 
 ![AbuseIPDB API Key](readme_media/ai_api_key.png)
 
+### AlienVault OTX
+
+1. Register for a free AlienVault OTX account: [https://otx.alienvault.com/users/sign_up](https://otx.alienvault.com/users/sign_up).
+2. Once registered and logged in, navigate to your profile by clicking on your username in the top-right corner and selecting `My Profile`.
+3. On the profile page, click on the `API Key` tab to view your API key. Click on the `Copy to Clipboard` button to copy your API key.
+
 ### .env File Setup
 
 **`Warning`**: Do not share, upload, commit, or otherwise expose your API keys to the public. This can lead to unauthorized access and usage of your API keys. The `.env` file is used to store your API keys in a secure manner, and has been added to the `.gitignore` file to prevent accidental exposure.
@@ -74,9 +81,10 @@ This project was tested on Python 3.14.2.
 VIRUSTOTAL_API_KEY=YOUR VIRUSTOTAL API KEY
 IPINFO_API_KEY=YOUR IPINFO API KEY
 ABUSEIPDB_API_KEY=YOUR ABUSEIPDB API KEY
+ALIENVAULT_API_KEY=YOUR ALIENVAULT API KEY
 ```
 
-2. Replace `YOUR VIRUSTOTAL API KEY`, `YOUR IPINFO API KEY`, `YOUR ABUSEIPDB API KEY` with the respective API keys you obtained in the previous steps.
+2. Replace `YOUR VIRUSTOTAL API KEY`, `YOUR IPINFO API KEY`, `YOUR ABUSEIPDB API KEY`, `YOUR ALIENVAULT API KEY` with the respective API keys you obtained in the previous steps.
 
 3. Ensure that the `.env` file is in the root directory of the project.
 

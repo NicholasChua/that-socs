@@ -1,0 +1,49 @@
+{
+    "schema_version": "1.0",
+    "normalized_time": "2025-12-28T14:11:20.677834+00:00",
+    "source": "AlienVault OTX",
+    "ioc_type": "ip",
+    "ioc": "118.25.6.39",
+    "reputation_score": 0,
+    "malicious": false,
+    "confidence_score": null,
+    "detection_stats": null,
+    "geo_info": {
+        "country": "CN",
+        "country_name": "China",
+        "city": null,
+        "region": null,
+        "coordinates": "34.7732,113.722",
+        "continent_code": "AS"
+    },
+    "network_info": {
+        "asn": "AS45090",
+        "organization": "shenzhen tencent computer systems company limited"
+    },
+    "abuse_info": {
+        "is_whitelisted": false,
+        "pulse_count": 0,
+        "false_positive_count": 0
+    },
+    "timestamps": null,
+    "tags": [],
+    "categories": [],
+    "file_info": null,
+    "domain_info": null,
+    "additional_info": {
+        "whois_link": "http://whois.domaintools.com/118.25.6.39",
+        "sections": [
+            "general",
+            "geo",
+            "reputation",
+            "url_list",
+            "passive_dns",
+            "malware",
+            "nids_list",
+            "http_scans"
+        ],
+        "validation": [],
+        "false_positive": [],
+        "adversaries": []
+    }
+}
